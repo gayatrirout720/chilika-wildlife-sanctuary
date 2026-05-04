@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chilika Lake Animal Preserve - Nature's Paradise</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23004d40" width="1200" height="600"/><circle fill="%2300bfa5" cx="200" cy="150" r="80"/><circle fill="%23ffeb3b" cx="800" cy="200" r="60"/><path fill="%238bc34a" d="M300 400 Q500 350 700 450 Q900 500 1100 420"/></svg>');
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ffd700;
+            color: #1e3c72;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255,215,0,0.4);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .container {
+            padding: 0 2rem;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1e3c72;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        /* Wildlife Grid */
+        .wildlife-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .wildlife-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .wildlife-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .wildlife-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-content h3 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+        }
+
+        /* Conservation Section */
+        .conservation-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Contact */
+        .contact {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1.5rem;
+            color: #ffd700;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #ffd700;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">🐘 Chilika Preserve</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#wildlife">Wildlife</a></li>
+                <li><a href="#conservation">Conservation</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Chilika Lake Animal Preserve</h1>
+            <p>India's Largest Coastal Lagoon - Home to 150+ Migratory Birds & Rare Irrawaddy Dolphins</p>
+            <a href="#about" class="cta-button">Explore Chilika</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container fade-in">
+        <h2>🌊 About Chilika Preserve</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p><strong>Chilika Lake</strong>, located in Odisha, India, is Asia's largest brackish water lagoon and a designated Ramsar Wetland of International Importance. Spanning 1,100 sq.km, it serves as a critical habitat for diverse aquatic life.</p>
+                <p>Declared a bird sanctuary in 1981, Chilika hosts over <strong>150 migratory bird species</strong> from as far as Siberia, Caspian Sea, and Mongolia during winter. The preserve plays a vital role in biodiversity conservation and sustainable ecotourism.</p>
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-number">1,100</span>
+                        <span>Sq.Km Area</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">150+</span>
+                        <span>Migratory Birds</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">52</span>
+                        <span>Fish Species</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">5M</span>
+                        <span>Annual Visitors</span>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <svg width="400" height="300" viewBox="0 0 400 300" style="border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+                    <defs>
+                        <radialGradient id="lakeGrad" cx="50%" cy="50%">
+                            <stop offset="0%" style="stop-color:#00bfa5"/>
+                            <stop offset="100%" style="stop-color:#004d40"/>
+                        </radialGradient>
+                    </defs>
+                    <rect width="400" height="300" fill="url(#lakeGrad)" rx="20"/>
+                    <circle fill="#ffeb3b" cx="100" cy="80" r="25"/>
+                    <circle fill="#8bc34a" cx="300" cy="120" r="20"/>
+                    <path fill="#f44336" d="M150 200 Q200 180 250 220 Q300 240 350 210" opacity="0.8"/>
+                    <circle fill="#795548" cx="50" cy="250" r="15"/>
+                    <circle fill="#795548" cx="350" cy="260" r="12"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wildlife Section -->
+    <section id="wildlife" style="background: #f8f9fa;" class="container fade-in">
+        <h2>🐬 Our Precious Wildlife</h2>
+        <div class="wildlife-grid">
+            <div class="wildlife-card">
+                <div style="background: linear-gradient(135deg, #2196f3, #21cbf3); height: 200px; display: flex; align-items: center; justify-content: center;">
+                    <span style="font-size: 4rem;">🐬</span>
+                </div>
+                <div class="card-content">
+                    <h3>Irrawaddy Dolphin</h3>
+                    <p>Endangered species with only 150 individuals. Chilika is their only habitat in India. These gentle dolphins are a major attraction.</p>
+                </div>
+            </div>
+            <div class="wildlife-card">
+                <div style="background: linear-gradient(135deg, #ff9800, #ffb74d); height: 200px; display: flex; align-items: center; justify-content: center;">
+                    <span style="font-size: 4rem;">🦅</span>
+                </div>
+                <div class="card-content">
+                    <h3>Migratory Birds</h3>
+                    <p>Purple Moorhen, Siberian Crane, Flamingo, and 150+ species visit annually. Nalabana Island is a key bird sanctuary.</p>
+                </div>
+            </div>
+            <div class="wildlife-card">
+                <div style="background: linear-gradient(135deg, #4caf50, #81c784); height: 200px; display: flex; align-items: center; justify-content: center;">
+                    <span style="font-size: 4rem;">🐟</span>
+                </div>
+                <div class="card-content">
+                    <h3>52 Fish Species</h3>
+                    <p>From Seabass to Mullets, Chilika supports rich fishery. Traditional fishing communities depend on sustainable practices.</p>
+                </div>
+            </div>
+            <div class="wildlife-card">
+                <div style="background: linear-gradient(135deg, #9c27b0, #ba68c8); height: 200px; display: flex; align-items: center; justify-content: center;">
+                    <span style="font-size: 4rem;">🦀</span>
+                </div>
+                <div class="card-content">
+                    <h3>Crustaceans & Molluscs</h3>
+                    <p>Tiger Prawns, Mud Crabs, and Bivalves thrive in brackish waters, supporting local economy and biodiversity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conservation Section -->
+    <section id="conservation" class="container fade-in">
+        <h2>🌱 Conservation Efforts</h2>
+        <div class="conservation-features">
+            <div class="feature">
+                <div class="feature-icon">🐬</div>
+                <h3>Dolphin Protection</h3>
+                <p>24/7 monitoring, anti-poaching patrols, and research programs ensure Irrawaddy dolphin safety.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🛶</div>
+                <h3>Sustainable Tourism</h3>
+                <p>Regulated boat tours, capacity limits, and eco-friendly practices protect the fragile ecosystem.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔬</div>
+                <h3>Research Station</h3>
+                <p>Chilika Development Authority conducts water quality monitoring, species census, and habitat restoration.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🌿</div>
+                <h3>Mangrove Restoration</h3>
+                <p>Planting native mangroves to combat erosion and provide fish nurseries and bird habitats.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" style="background: #f8f9fa;" class="container fade-in">
+        <h2>📸 Gallery</h2>
+        <div class="gallery">
+            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">🐬</div>
+            <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">🦅</div>
+            <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">🌅</div>
+            <div style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">🐟</div>
+            <div style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">🦩</div>
+            <div style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">🌊</div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact container fade-in">
+        <h2 style="color: white; margin-bottom: 3rem;">📞 Visit Us</h2>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Chilika Development Authority</h3>
+                <div class="contact-item">
+                    <i>📍</i>
+                    <span>Satpada, Puri District, Odisha - 752014</span>
+                </div>
+                <div class="contact-item">
+                    <i>📞</i>
+                    <span>+91 6758 262xxx</span>
+                </div>
+                <div class="contact-item">
+                    <i>✉️</i>
+                    <span>info@chilika.gov.in</span>
+                </div>
+                <div class="contact-item">
+                    <i>🕒</i>
+                    <span>Open: 6AM - 6PM (Daily)</span>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3818.614614614614!2d85.6667!3d19.7333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTeCsDQ0JzAwLjQiTiA4NcKwNDAnMDAuMCJF!5e0!3m2!1sen!2sin!4v1630000000000" 
+                        width="100%" height="300" style="border:0; border-radius: 15px;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Chilika Lake Animal Preserve. Protecting Odisha's Natural Treasure. 🌿🐬</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(30, 60, 114, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Counter animation for stats
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.textContent.replace(/[^\d]/g, ''));
+                const increment = target / 100;
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.textContent = Math.floor(current) + (target > 100 ? '' : '+');
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target + (target > 100 ? '' : '+');
+                    }
+                };
+                
+                if (window.scrollY > 800) {
+                    updateCounter();
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateCounters);
+    </script>
+</body>
+</html>
